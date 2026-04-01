@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" fill="none" role="img" aria-label="PalletStorage logo icon">
+  <!-- Planci superioare (4 scanduri orizontale) -->
+  <rect x="0" y="1"  width="44" height="6" rx="2" fill="#F5A623"/>
+  <rect x="0" y="9"  width="44" height="6" rx="2" fill="#D4881A"/>
+  <rect x="0" y="17" width="44" height="6" rx="2" fill="#F5A623"/>
+
+  <!-- Blocuri suport (3 picioare) -->
+  <rect x="0"  y="25" width="12" height="9" rx="2" fill="#B8741A"/>
+  <rect x="16" y="25" width="12" height="9" rx="2" fill="#B8741A"/>
+  <rect x="32" y="25" width="12" height="9" rx="2" fill="#B8741A"/>
+
+  <!-- Planca inferioara -->
+  <rect x="0" y="36" width="44" height="6" rx="2" fill="#F5A623"/>
+</svg>
