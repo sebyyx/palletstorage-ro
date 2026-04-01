@@ -4,3 +4,7 @@ deployment:
     - export DEPLOYPATH=/home/palletst/public_html/
     - /bin/mkdir -p $DEPLOYPATH
     - /bin/cp -v index.html $DEPLOYPATH
+    - /bin/cp -v styles.css $DEPLOYPATH
+    - /bin/cp -v main.js $DEPLOYPATH
+    - /bin/cp -v contact.php $DEPLOYPATH
+    - /bin/cp -Rv assets $DEPLOYPATH
