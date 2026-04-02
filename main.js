@@ -2,6 +2,45 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ── Mobile menu ────────────────────────────────────────────────────────
+  const hamburger = document.getElementById('nav-hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  const overlay   = document.getElementById('nav-overlay');
+  const closeBtn  = document.getElementById('nav-close');
+
+  function openMenu() {
+    navMobile.classList.add('is-open');
+    overlay.classList.add('is-open');
+    navMobile.setAttribute('aria-hidden', 'false');
+    overlay.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    navMobile.classList.remove('is-open');
+    overlay.classList.remove('is-open');
+    navMobile.setAttribute('aria-hidden', 'true');
+    overlay.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger.addEventListener('click', () => {
+    hamburger.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+  });
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+
+  navMobile.querySelectorAll('.nav__mobile-link').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMobile.classList.contains('is-open')) closeMenu();
+  });
+  // ─────────────────────────────────────────────────────────────────────
+
   async function renderPdfThumbs() {
     if (typeof pdfjsLib === 'undefined') return;
 

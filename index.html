@@ -26,8 +26,28 @@
         <a href="#locatie">Locație</a>
         <a href="#contact" class="btn btn--outline-light">Contact</a>
       </nav>
+      <button class="nav__hamburger" id="nav-hamburger" aria-label="Deschide meniu" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </header>
+
+  <!-- MOBILE MENU -->
+  <div class="nav__mobile-overlay" id="nav-overlay" aria-hidden="true"></div>
+  <nav class="nav__mobile" id="nav-mobile" aria-hidden="true" aria-label="Meniu mobil">
+    <button class="nav__mobile-close" id="nav-close" aria-label="Închide meniu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <a href="#servicii" class="nav__mobile-link">Servicii</a>
+    <a href="#despre" class="nav__mobile-link">Despre noi</a>
+    <a href="#certificari" class="nav__mobile-link">Certificări</a>
+    <a href="#locatie" class="nav__mobile-link">Locație</a>
+    <a href="#contact" class="nav__mobile-link nav__mobile-link--cta">Contact</a>
+  </nav>
 
   <!-- HERO -->
   <section class="hero">

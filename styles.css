@@ -549,8 +549,8 @@ img { max-width: 100%; display: block; }
 }
 
 .whatsapp-float__icon {
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -568,9 +568,133 @@ img { max-width: 100%; display: block; }
   letter-spacing: .2px;
 }
 
+/* ---------- HAMBURGER BUTTON ---------- */
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+.nav__hamburger:hover { background: rgba(16,47,96,.07); }
+.nav__hamburger span {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background: #102f60;
+  border-radius: 3px;
+  transition: transform var(--transition), opacity var(--transition);
+  transform-origin: center;
+}
+.nav__hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.nav__hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav__hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* ---------- MOBILE MENU OVERLAY ---------- */
+.nav__mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+  backdrop-filter: blur(2px);
+}
+.nav__mobile-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------- MOBILE MENU DRAWER ---------- */
+.nav__mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: #ffffff;
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1.75rem 2.5rem;
+  gap: .25rem;
+  transform: translateX(100%);
+  transition: transform .3s cubic-bezier(.4,0,.2,1);
+  box-shadow: -8px 0 40px rgba(0,0,0,.15);
+  overflow-y: auto;
+}
+.nav__mobile.is-open {
+  transform: translateX(0);
+}
+
+.nav__mobile-close {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: rgba(16,47,96,.07);
+  border-radius: 8px;
+  cursor: pointer;
+  color: #102f60;
+  margin-bottom: 1.5rem;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+.nav__mobile-close:hover { background: rgba(16,47,96,.14); }
+
+.nav__mobile-link {
+  display: block;
+  padding: .9rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #102f60;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition);
+  border-bottom: 1px solid rgba(16,47,96,.07);
+}
+.nav__mobile-link:last-of-type { border-bottom: none; }
+.nav__mobile-link:hover { background: rgba(16,47,96,.06); }
+
+.nav__mobile-link--cta {
+  margin-top: 1.25rem;
+  background: var(--color-primary);
+  color: var(--color-dark);
+  text-align: center;
+  border-radius: 50px;
+  border-bottom: none;
+  font-weight: 700;
+}
+.nav__mobile-link--cta:hover {
+  background: var(--color-primary-d);
+  color: var(--color-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(245,166,35,.35);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 768px) {
   .nav__links { display: none; }
+  .nav__hamburger { display: flex; }
 
   .stats__grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
 
