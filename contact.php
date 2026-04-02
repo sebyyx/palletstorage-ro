@@ -101,9 +101,11 @@ function smtp_send(string $to, string $subject, string $body, bool $isHtml = fal
     $msg .= "Subject: {$subject}\r\n";
     $msg .= "MIME-Version: 1.0\r\n";
     $msg .= "Content-Type: " . ($isHtml ? "text/html" : "text/plain") . "; charset=UTF-8\r\n";
-    $msg .= "Content-Transfer-Encoding: 8bit\r\n";
+    $msg .= "Content-Transfer-Encoding: quoted-printable\r\n";
     $msg .= "\r\n";
-    $msg .= str_replace("\n.", "\n..", $body); // dot-stuffing RFC 5321
+    // quoted-printable wraps long lines safely for SMTP transport limits
+    $encodedBody = quoted_printable_encode($body);
+    $msg .= preg_replace('/(^|\r\n)\./', '$1..', $encodedBody); // dot-stuffing RFC 5321
     $msg .= "\r\n.";
 
     $cmd($msg);
